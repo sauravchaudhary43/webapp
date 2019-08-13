@@ -13,7 +13,7 @@ node{
     }
   }
   stage("pmd coderwview"){
-    withMaven(jdk: 'java-1.8',maven: 'MAven3.6'){
+    withMaven(jdk: 'java-1.8', maven: 'Maven3.6') {
       sh "mvn -P metrics pmd:pmd"
       pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'target/pmd.xml', unHealthy: ''
     }
