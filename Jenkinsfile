@@ -18,6 +18,12 @@ node{
       pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'target/pmd.xml', unHealthy: ''
     }
   }
+  stage("Junit testing"){
+    withMaven(jdk: 'java-1.8',maven: 'Maven3.6'){
+      sh "mvn test"
+      junit 'target/surefire-reports/*.xml'
+    }
+  }
   stage("package addressbook"){
     withMaven(jdk: 'java-1.8', maven: 'Maven3.6') {
        sh "mvn package"
