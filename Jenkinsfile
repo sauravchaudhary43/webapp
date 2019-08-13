@@ -26,7 +26,7 @@ node{
   }
   stage("Cubebrtura testing"){
     withMaven(jdk: 'java-1.8',maven: 'Maven3.6'){
-      sh "cobertura:cobertura -Dcobertura.report.format=xml"
+      sh "mvn cobertura:cobertura -Dcobertura.report.format=xml"
     }
   }
   stage("package addressbook"){
