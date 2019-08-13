@@ -24,6 +24,11 @@ node{
       junit 'target/surefire-reports/*.xml'
     }
   }
+  stage("Cubebrtura testing"){
+    withMaven(jdk: 'java-1.8',maven: 'Maven3.6'){
+      sh "cobertura:cobertura -Dcobertura.report.format=xml"
+    }
+  }
   stage("package addressbook"){
     withMaven(jdk: 'java-1.8', maven: 'Maven3.6') {
        sh "mvn package"
