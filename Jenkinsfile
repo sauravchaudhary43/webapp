@@ -12,6 +12,11 @@ node{
         sh "mvn compile"
     }
   }
+  stage("pmd coderwview"){
+    withMaven(jdk: 'java-1.8',maven: 'MAven3.6'){
+      pmd canComputeNew: false, defaultEncoding: '', healthy: '', pattern: 'target/pmd.xml', unHealthy: ''
+    }
+  }
   stage("package addressbook"){
     withMaven(jdk: 'java-1.8', maven: 'Maven3.6') {
        sh "mvn package"
