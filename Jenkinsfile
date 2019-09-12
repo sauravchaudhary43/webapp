@@ -34,4 +34,7 @@ node{
        sh "mvn package"
     }
   }
+  sshagent(['deployer']) {
+    sh 'scp Package/target/addressbook.war deployer@10.0.43.51:/root/opt/apache-tomcat-8.5.43/webapps'
+  }
 }
